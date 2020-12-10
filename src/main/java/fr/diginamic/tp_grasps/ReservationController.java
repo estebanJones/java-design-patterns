@@ -1,14 +1,8 @@
 package fr.diginamic.tp_grasps;
 
-import java.time.LocalDateTime;
-
 import org.springframework.stereotype.Controller;
 
-import fr.diginamic.tp_grasps.beans.Client;
 import fr.diginamic.tp_grasps.beans.Reservation;
-import fr.diginamic.tp_grasps.beans.TypeReservation;
-import fr.diginamic.tp_grasps.daos.TypeReservationDao;
-import fr.diginamic.tp_grasps.factory.ReservationFactory;
 import fr.diginamic.tp_grasps.services.ClientService;
 import fr.diginamic.tp_grasps.services.ReservationService;
 import fr.diginamic.tp_grasps.utils.DateUtils;
@@ -23,9 +17,7 @@ public class ReservationController {
 	private ReservationService reservationService;
 	private DateUtils dateUtils;
 	/** formatter */
-	public ReservationController(DateUtils dateUtils, ClientService clientService, ReservationService reservationService) {
-		this.dateUtils = dateUtils;
-		this.clientService = clientService;
+	public ReservationController(ReservationService reservationService) {
 		this.reservationService = reservationService;
 	}
 	

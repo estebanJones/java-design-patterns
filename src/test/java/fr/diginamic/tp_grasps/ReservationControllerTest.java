@@ -7,6 +7,7 @@ import org.junit.Test;
 import fr.diginamic.tp_grasps.beans.Reservation;
 import fr.diginamic.tp_grasps.daos.ClientDao;
 import fr.diginamic.tp_grasps.daos.TypeReservationDao;
+import fr.diginamic.tp_grasps.factory.ReservationFactory;
 import fr.diginamic.tp_grasps.services.ClientService;
 import fr.diginamic.tp_grasps.services.ReservationService;
 import fr.diginamic.tp_grasps.utils.DateUtils;
@@ -76,7 +77,11 @@ public class ReservationControllerTest {
 	}
 	
 	public ReservationController getInstance() {
-		return new ReservationController(new DateUtils(), new ClientService(new ClientDao()), new ReservationService(new TypeReservationDao()));
+		return new ReservationController(new ReservationService( new DateUtils(), new ClientService(new ClientDao()), new ReservationFactory(), new TypeReservationDao()));
 	}
+	private TypeReservationDao typeReservationDao;
+	private ClientService clientService;
+	private ReservationFactory reservationfactory;
+	private DateUtils dateUtils;
 
 }

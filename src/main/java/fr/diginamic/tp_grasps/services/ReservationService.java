@@ -29,7 +29,7 @@ public class ReservationService implements IReservationService {
 	}
 	
 	@Override
-	public Reservation creerReservation(Params params, String dateReservationStr, String identifiantClient,  String typeReservation,
+	public Reservation creerReservation(Params params, String identifiantClient,  String dateReservationStr, String typeReservation,
 			int nbPlaces) {
 	// 1) Récupération des infos provenant de la classe appelante
 			
