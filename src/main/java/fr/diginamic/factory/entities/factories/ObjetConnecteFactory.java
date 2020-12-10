@@ -14,10 +14,13 @@ public class ObjetConnecteFactory implements IObjectConnecteFactory {
 		switch (limitVolt) {
 		case EnceinteConnecte:
 			objetConnecte = new EnceinteConnecte(limitVolt.getLimitVolt());
+			break;
 		case Tablette:
 			objetConnecte = new Tablette(limitVolt.getLimitVolt());
+			break;
 		case TelephonePortable:
 			objetConnecte = new TelephonePortable(limitVolt.getLimitVolt());
+			break;
 		default:
 			break;
 		}

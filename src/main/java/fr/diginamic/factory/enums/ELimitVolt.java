@@ -14,10 +14,4 @@ public enum ELimitVolt {
 	public Integer getLimitVolt() {
 		return limitVolt;
 	}
-
-	public void setLimitVolt(Integer limitVolt) {
-		this.limitVolt = limitVolt;
-	}
-	
-	
 }
