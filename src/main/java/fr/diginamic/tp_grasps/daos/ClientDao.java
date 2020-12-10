@@ -3,8 +3,11 @@ package fr.diginamic.tp_grasps.daos;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Component;
+
 import fr.diginamic.tp_grasps.beans.Client;
 
+@Component
 public class ClientDao {
 
 	private static Client[] clients = {new Client("1", true), new Client("2", true), new Client("3", false)};

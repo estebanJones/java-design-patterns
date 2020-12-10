@@ -1,13 +1,17 @@
 package fr.diginamic.tp_grasps;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 import fr.diginamic.tp_grasps.beans.Reservation;
+import fr.diginamic.tp_grasps.daos.ClientDao;
+import fr.diginamic.tp_grasps.daos.TypeReservationDao;
+import fr.diginamic.tp_grasps.services.ClientService;
+import fr.diginamic.tp_grasps.services.ReservationService;
+import fr.diginamic.tp_grasps.utils.DateUtils;
 
 public class ReservationControllerTest {
-
 	/** DELTA */
 	private static final double DELTA = 0.0000001;
 	
@@ -19,8 +23,9 @@ public class ReservationControllerTest {
 		params.setNbPlaces(3);
 		params.setIdentifiantClient("1");
 		params.setTypeReservation("TH"); // Théâtre
+		this.getInstance();
 		
-		ReservationController controller = new ReservationController();
+		ReservationController controller = this.getInstance();
 		Reservation reservation = controller.creerReservation(params);
 		
 		assertEquals(382.5, reservation.getTotal(), DELTA);
@@ -34,8 +39,8 @@ public class ReservationControllerTest {
 		params.setNbPlaces(3);
 		params.setIdentifiantClient("3");
 		params.setTypeReservation("TH"); // Théâtre
-		
-		ReservationController controller = new ReservationController();
+		this.getInstance();
+		ReservationController controller = this.getInstance();
 		Reservation reservation = controller.creerReservation(params);
 		
 		assertEquals(450.0, reservation.getTotal(), DELTA);
@@ -49,8 +54,7 @@ public class ReservationControllerTest {
 		params.setNbPlaces(4);
 		params.setIdentifiantClient("2");
 		params.setTypeReservation("CI"); // Théâtre
-		
-		ReservationController controller = new ReservationController();
+		ReservationController controller = this.getInstance();
 		Reservation reservation = controller.creerReservation(params);
 		
 		assertEquals(43.6, reservation.getTotal(), DELTA);
@@ -65,10 +69,14 @@ public class ReservationControllerTest {
 		params.setIdentifiantClient("3");
 		params.setTypeReservation("CI"); // Théâtre
 		
-		ReservationController controller = new ReservationController();
+		ReservationController controller = this.getInstance();
 		Reservation reservation = controller.creerReservation(params);
 		
 		assertEquals(43.6, reservation.getTotal(), DELTA);
+	}
+	
+	public ReservationController getInstance() {
+		return new ReservationController(new DateUtils(), new ClientService(new ClientDao()), new ReservationService(new TypeReservationDao()));
 	}
 
 }

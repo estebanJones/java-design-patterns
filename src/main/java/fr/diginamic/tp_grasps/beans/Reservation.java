@@ -31,7 +31,16 @@ public class Reservation {
 		super();
 		this.date = date;
 	}
-
+	
+	public void calculeMontantTotal(TypeReservation type) {
+		double total = type.getMontant() * this.nbPlaces;
+		if (this.client.isPremium()) {
+			this.setTotal(total*(1-type.getReductionPourcent()/100.0));
+		}
+		else {
+			this.setTotal(total);
+		}
+	}
 	/** Getter
 	 * @return the date
 	 */

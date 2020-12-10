@@ -3,8 +3,11 @@ package fr.diginamic.tp_grasps.daos;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Component;
+
 import fr.diginamic.tp_grasps.beans.TypeReservation;
 
+@Component
 public class TypeReservationDao {
 	
 	private static TypeReservation[] types = {new TypeReservation("TH", 150.0, 15.0), new TypeReservation("CI", 10.9, 0.0)};
