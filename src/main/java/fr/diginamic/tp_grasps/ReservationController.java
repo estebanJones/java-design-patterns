@@ -33,6 +33,7 @@ public class ReservationController {
 		String dateReservationStr = params.getDateReservation();
 		String typeReservation = params.getTypeReservation();
 		int nbPlaces = params.getNbPlaces();
+		
 		return this.reservationService.creerReservation(params, identifiantClient, dateReservationStr, typeReservation, nbPlaces);
 	}
 }

@@ -8,29 +8,27 @@ import fr.diginamic.tp_grasps.Params;
 import fr.diginamic.tp_grasps.beans.Client;
 import fr.diginamic.tp_grasps.beans.Reservation;
 import fr.diginamic.tp_grasps.beans.TypeReservation;
-import fr.diginamic.tp_grasps.daos.TypeReservationDao;
+import fr.diginamic.tp_grasps.daos.ITypeReservationDao;
 import fr.diginamic.tp_grasps.factory.ReservationFactory;
 import fr.diginamic.tp_grasps.interfaces.IReservationService;
 import fr.diginamic.tp_grasps.utils.DateUtils;
 
 @Service
 public class ReservationService implements IReservationService {
-	private TypeReservationDao typeReservationDao;
+	private ITypeReservationDao typeReservationDao;
 	private ClientService clientService;
 	private ReservationFactory reservationfactory;
 	private DateUtils dateUtils;
 	
 	/** formatter */
-	public ReservationService(DateUtils dateUtils, ClientService clientService, ReservationFactory reservationfactory, TypeReservationDao typeReservationDao) {
+	public ReservationService(DateUtils dateUtils, ClientService clientService, ITypeReservationDao typeReservationDao) {
 		this.typeReservationDao = typeReservationDao;
 		this.dateUtils = dateUtils;
 		this.clientService = clientService;
-		this.reservationfactory = reservationfactory;
 	}
 	
 	@Override
-	public Reservation creerReservation(Params params, String identifiantClient,  String dateReservationStr, String typeReservation,
-			int nbPlaces) {
+	public Reservation creerReservation(Params params, String identifiantClient,  String dateReservationStr, String typeReservation, int nbPlaces) {
 	// 1) Récupération des infos provenant de la classe appelante
 			
 			// 2) Conversion de la date de réservation en LocalDateTime
