@@ -1,6 +1,6 @@
 package fr.diginamic.factory.entities;
 
-public class ObjetConnecte {
+public abstract class ObjetConnecte {
 	private Integer limiteVolts;
 
 	public ObjetConnecte(Integer limiteVolts) {
